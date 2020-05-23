@@ -1,0 +1,54 @@
+# https://github.com/golangci/golangci-lint#config-file
+
+linters-settings: # 各linterの詳細設定
+  govet:
+    check-shadowing: true
+  golint:
+    min-confidence: 0.8 # 数値が低いほど厳しいlint
+  misspell:
+    # Correct spellings using locale preferences for US or UK.
+    # Default is to use a neutral variety of English.
+    # Setting locale to US will correct the British spelling of 'colour' to 'color'.
+    locale: US
+  errcheck:
+    # report about not checking of errors in type assertions: `a := b.(MyStruct)`;
+    # default is false: such cases aren't reported by default.
+    check-type-assertions: false
+
+    # report about assignment of errors to blank identifier: `num, _ := strconv.Atoi(numStr)`;
+    # default is false: such cases aren't reported by default.
+    check-blank: false
+
+linters:
+  disable-all: true
+  enable:
+    - deadcode # 未使用のコードを検出
+    - errcheck # チェックされていない error の検出
+    - goconst # 定数に置き換えられるコードがないかチェックする
+    - gocyclo # コードの循環的複雑度をチェックする
+    - gofmt # 公式
+    - goimports # 公式
+    - golint # 公式
+    - gosimple # より簡潔に書けるコードがないかチェックする
+    - govet # 公式
+    - ineffassign # 値が未使用なまま上書きされている変数がないかチェックする
+    - misspell # 英単語のスペルに誤りがないかチェックする
+    - nakedret # Named Result Parametersによるreturnをしていないかチェックする
+    - staticcheck # 誤った動作をするコードがないかチェックする(https://github.com/dominikh/go-tools/tree/master/cmd/staticcheck)
+    - structcheck # 未使用の構造体フィールドを検出
+    - unconvert # 不必要なキャストがないかチェックする
+    - unparam # 未使用の引数がないかチェックする
+    - unused # 未使用の変数、型、フィールドがないかチェックする
+    - varcheck # 未使用のグローバル変数と定数を検出
+
+# Independently from option `exclude` we use default exclude patterns,
+# it can be disabled by this option. To list all
+# excluded by default patterns execute `golangci-lint run --help`.
+# Default value for this option is true.
+issues:
+  exclude-use-default: false
+  max-same-issues: 0
+
+# default is true. Enables skipping of directories:
+#   vendor$, third_party$, testdata$, examples$, Godeps$, builtin$
+skip-dirs-use-default: true
