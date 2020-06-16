@@ -2,23 +2,15 @@
 package examples
 
 func NewUser(
-	id int,
 	name string,
-	age int,
 ) *User {
 	return &User{
-		id:   id,
 		name: name,
-		age:  age,
 	}
 }
 
 func (g *User) Id() int {
 	return g.id
-}
-
-func (g *User) Name() string {
-	return g.name
 }
 
 func (g *User) Age() int {
@@ -31,8 +23,4 @@ func (s *User) SetId(id int) {
 
 func (s *User) SetName(name string) {
 	s.name = name
-}
-
-func (s *User) SetAge(age int) {
-	s.age = age
 }
